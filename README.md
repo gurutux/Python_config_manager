@@ -1,5 +1,7 @@
 # Python_config_manager
 
+###Read this in Edit mode for better visual
+
 This config manager was created as a test, it is less than one day job. 
 The main idea here is that config are written in Json, and each config is applied on its own.
 
