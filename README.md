@@ -1,7 +1,5 @@
 # Python_config_manager
 
-## Read this in Edit mode for better visual
-
 ## How to install:
 run bootstrap.sh
 in case it didn't work: 
