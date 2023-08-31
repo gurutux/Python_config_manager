@@ -14,9 +14,9 @@
 		"Service4": "Restart"
 	},
 	"Packages":{
-		"package1": "install",
-		"package2": "remove",
-		"package3": "update",
+		"package1": "Install",
+		"package2": "Remove",
+		"package3": "Update",
 		"related_services": ["service1", "service2"]
 	},
 	"Files":{

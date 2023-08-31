@@ -45,27 +45,50 @@ def manage_files(command, ssh_connections):
 	for host, ssh_connection in ssh_connections.items():
 		if command["Command"] == "Create":
 			#ssh_connection.exec_command("echo '{}' > {}".format(command.key()))
-			print("echo '{}' > {}".format(command["attributes"], command["Path"]))
+			print("sudo echo '{}' > {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "Modify":
 			#ssh_connection.exec_command("echo '{}' > {}".format(command["attributes"], command["Path"]))
-			print("echo '{}' > {}".format(command["attributes"], command["Path"]))
+			print("sudo echo '{}' > {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "update_permissions":
 			#ssh_connection.exec_command("chmode {} {}".format(command["attributes"], command["Path"]))
-			print("chmode {} {}".format(command["attributes"], command["Path"]))
+			print("sudo chmod {} {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "update_owner":
 			#ssh_connection.exec_command("chown {} {}".format(command["attributes"], command["Path"]))
-			print("chown {} {}".format(command["attributes"], command["Path"]))
+			print("sudo chown {} {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "Delete":
 			#ssh_connection.exec_command("rm -rf {}".format(command["Path"]))
-			print("rm -rf {}".format(command["Path"]))
+			print("sudo rm -rf {}".format(command["Path"]))
 
 
 def manage_packages(command, ssh_connections):
-	pass
+	for host, ssh_connection in ssh_connections.items():
+		#ssh_connection.exec_command("sudo apt update -y")
+		print("sudo apt update -y")
+		if command["Command"] == "Install":
+			#ssh_connection.exec_command("sudo apt install -y {}".format(command['Package']))
+			print("sudo apt install -y {}".format(command['Package']))
+		elif command["Command"] == "Remove":
+			#ssh_connection.exec_command("sudo apt remove -y {}".format(command['Package']))
+			print("sudo apt remove -y {}".format(command['Package']))
+		elif command["Command"] == "Update":
+			#ssh_connection.exec_command("sudo apt update -y {}".format(command['Package']))
+			print("sudo apt --only-upgrade install -y {}".format(command['Package']))
 
 
 def manage_services(command, ssh_connections):
-	pass
+	for host, ssh_connection in ssh_connections.items():
+		if command["Command"] == "Restart":
+			#ssh_connection.exec_command("sudo systemctl restart {}".format(command['Service']))
+			print("sudo systemctl restart {}".format(command['Service']))
+		elif command["Command"] == "Reload":
+			#ssh_connection.exec_command("sudo systemctl reload {}".format(command['Service']))
+			print("sudo systemctl reload {}".format(command['Service']))
+		elif command["Command"] == "Start":
+			#ssh_connection.exec_command("sudo systemctl start {}".format(command['Service']))
+			print("sudo systemctl start {}".format(command['Service']))
+		elif command["Command"] == "Stop":
+			#ssh_connection.exec_command("sudo systemctl stop {}".format(command['Service']))
+			print("sudo systemctl stop {}".format(command['Service']))
 
 
 def switch_config_commands(config, ssh_connections):
@@ -75,19 +98,19 @@ def switch_config_commands(config, ssh_connections):
 				for command in config[unit][file].keys():
 					if command == "related_services":
 						for serivce in config[unit][file][command]:
-							manage_services({serivce: "Restart"}, ssh_connections)
+							manage_services({"Service": serivce, "Command": "Restart"}, ssh_connections)
 					else:
 						manage_files({"Path": file, "Command": command, "attributes": config[unit][file][command]}, ssh_connections)
 		elif unit == "Packages":
 			for Package, command in config[unit].items():
 				if Package == "related_services":
 					for serivce in config[unit][Package]:
-						manage_services({serivce: "Restart"}, ssh_connections)
+						manage_services({"Service": serivce, "Command": "Restart"}, ssh_connections)
 				else:
-					manage_packages({Package: command}, ssh_connections)
+					manage_packages({"Package": Package, "Command": command}, ssh_connections)
 		elif unit == "Services":
 			for service, command in config[unit].items():
-				manage_services({serivce: command}, ssh_connections)
+				manage_services({"Service": serivce, "Command": command}, ssh_connections)
 
 
 async def config_executer(config, ssh_connections):
