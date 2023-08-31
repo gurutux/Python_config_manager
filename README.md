@@ -1,6 +1,15 @@
 # Python_config_manager
 
-###Read this in Edit mode for better visual
+## Read this in Edit mode for better visual
+
+## How to install:
+run bootstrap.sh
+in case it didn't work: 
+- install python3
+- pip3 install -r requirements.txt
+
+
+## Quick Notes
 
 This config manager was created as a test, it is less than one day job. 
 The main idea here is that config are written in Json, and each config is applied on its own.
