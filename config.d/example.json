@@ -8,7 +8,7 @@
 	"Packages":{
 		"package1": "install",
 		"package2": "remove",
-		"package2": "update"
+		"package3": "update"
 	},
 	"files":{
 		"fullpath1":{

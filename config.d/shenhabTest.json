@@ -1,0 +1,37 @@
+{
+	"Hosts":{
+		"shenhab_dev":{
+			"fqdn_ip": "63.35.162.229",
+			"login_user": "ubuntu",
+			"login_pass": null,
+			"login_key_file": "/Users/mahmoud.elshenhab/.ssh/id_rsa"
+		}
+	},
+	"Services": {
+		"Service1": "Stop",
+		"Service2": "Start",
+		"Service3": "Reload",
+		"Service4": "Restart"
+	},
+	"Packages":{
+		"package1": "install",
+		"package2": "remove",
+		"package3": "update"
+	},
+	"files":{
+		"fullpath1":{
+			"Create":"text in the file",
+			"update_permissions": "442",
+			"update_owner": "user",
+			"modify": "text in the file",
+			"related_services": ["service1", "service2"]
+		},
+		"fullpath2":{
+			"Create":"text in the file",
+			"update_permissions": "442",
+			"update_owner": "user",
+			"modify": "text in the file",
+			"related_services": ["service1", "service2"]
+		}
+	}
+}
