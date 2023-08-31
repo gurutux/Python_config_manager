@@ -30,8 +30,7 @@
 	},
 	"Hosts":{
 		"Uniq_hostname1":{
-			"fqdn": "x.com",
-			"ip": "192.169.3.1",
+			"fqdn_ip": "x.com",
 			"login_user": "username",
 			"login_pass": "Password", 
 			"login_key_file": "file_path"
