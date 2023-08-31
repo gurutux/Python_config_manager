@@ -8,9 +8,10 @@
 	"Packages":{
 		"package1": "install",
 		"package2": "remove",
-		"package3": "update"
+		"package3": "update",
+		"related_services": ["service1", "service2"]
 	},
-	"files":{
+	"Files":{
 		"fullpath1":{
 			"Create":"text in the file",
 			"update_permissions": "442",
@@ -19,6 +20,7 @@
 			"related_services": ["service1", "service2"]
 		},
 		"fullpath2":{
+			"Delete": null,
 			"Create":"text in the file",
 			"update_permissions": "442",
 			"update_owner": "user",
@@ -27,7 +29,7 @@
 		}
 	},
 	"Hosts":{
-		"hostname1":{
+		"Uniq_hostname1":{
 			"fqdn": "x.com",
 			"ip": "192.169.3.1",
 			"login_user": "username",

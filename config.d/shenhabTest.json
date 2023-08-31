@@ -16,14 +16,16 @@
 	"Packages":{
 		"package1": "install",
 		"package2": "remove",
-		"package3": "update"
+		"package3": "update",
+		"related_services": ["service1", "service2"]
 	},
-	"files":{
+	"Files":{
 		"fullpath1":{
+			"Delete": null,
 			"Create":"text in the file",
 			"update_permissions": "442",
 			"update_owner": "user",
-			"modify": "text in the file",
+			"Modify": "text in the file",
 			"related_services": ["service1", "service2"]
 		},
 		"fullpath2":{
