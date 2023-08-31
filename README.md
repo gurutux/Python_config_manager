@@ -8,7 +8,22 @@ in case it didn't work:
 - install python3
 - pip3 install -r requirements.txt
 
+## how to run
+- add a config file to config.d
+- run main.py using python3
+- This is not a deamonized tool
 
+## Quick Archeticture
+- the tool will read the config files first. 
+- then will prepare the SSH connections.
+- then will start interpret file by file.
+- each config file should be sequential, as I started changing the files first, then the packages then the services.
+- one config file can be implemented on multible hosts by adding more hosts to the Hosts section the config will be applyed to them too.
+- I didn't really play around a lot with the AsyncIO, hoowever there is huge pussibility to play with it in this situation, as we can paralize configs implementations and also implementing one config to multible hosts at the same time.
+- I havn't add a section for bash commands to be executed on the hosts, however this is also possible.
+- ofcourse python won't be the Fastest programming language to take such project to the next level, a coumpiled language would be the best.
+
+  
 ## Quick Notes
 
 This config manager was created as a test, it is less than one day job. 
