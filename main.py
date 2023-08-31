@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import paramiko
 import json
 import validators
