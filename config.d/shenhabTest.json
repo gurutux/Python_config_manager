@@ -3,13 +3,13 @@
 		"vm1":{
 			"fqdn_ip": "54.90.204.40",
 			"login_user": "root",
-			"login_pass": "LWACKT5Y6P4KFZ7KYPZE6WK6",
+			"login_pass": "USE THE PASSWORD YOU PROVIDED",
 			"login_key_file": null
 		},
 		"vm2":{
 			"fqdn_ip": "35.172.211.101",
 			"login_user": "root",
-			"login_pass": "LWACKT5Y6P4KFZ7KYPZE6WK6",
+			"login_pass": "USE THE PASSWORD YOU PROVIDED",
 			"login_key_file": null
 		}
 	},
