@@ -44,50 +44,50 @@ def setup_ssh_connections(configs):
 def manage_files(command, ssh_connections):
 	for host, ssh_connection in ssh_connections.items():
 		if command["Command"] == "Create":
-			#ssh_connection.exec_command("echo '{}' > {}".format(command.key()))
+			ssh_connection.exec_command("sudo echo '{}' > {}".format(command["attributes"], command["Path"]))
 			print("sudo echo '{}' > {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "Modify":
-			#ssh_connection.exec_command("echo '{}' > {}".format(command["attributes"], command["Path"]))
+			ssh_connection.exec_command("sudo echo '{}' > {}".format(command["attributes"], command["Path"]))
 			print("sudo echo '{}' > {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "update_permissions":
-			#ssh_connection.exec_command("chmode {} {}".format(command["attributes"], command["Path"]))
+			ssh_connection.exec_command("sudo chmod {} {}".format(command["attributes"], command["Path"]))
 			print("sudo chmod {} {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "update_owner":
-			#ssh_connection.exec_command("chown {} {}".format(command["attributes"], command["Path"]))
+			ssh_connection.exec_command("sudo chown {} {}".format(command["attributes"], command["Path"]))
 			print("sudo chown {} {}".format(command["attributes"], command["Path"]))
 		elif command["Command"] == "Delete":
-			#ssh_connection.exec_command("rm -rf {}".format(command["Path"]))
+			ssh_connection.exec_command("sudo rm -rf {}".format(command["Path"]))
 			print("sudo rm -rf {}".format(command["Path"]))
 
 
 def manage_packages(command, ssh_connections):
 	for host, ssh_connection in ssh_connections.items():
-		#ssh_connection.exec_command("sudo apt update -y")
+		ssh_connection.exec_command("sudo apt update -y")
 		print("sudo apt update -y")
 		if command["Command"] == "Install":
-			#ssh_connection.exec_command("sudo apt install -y {}".format(command['Package']))
+			ssh_connection.exec_command("sudo apt install -y {}".format(command['Package']))
 			print("sudo apt install -y {}".format(command['Package']))
 		elif command["Command"] == "Remove":
-			#ssh_connection.exec_command("sudo apt remove -y {}".format(command['Package']))
+			ssh_connection.exec_command("sudo apt remove -y {}".format(command['Package']))
 			print("sudo apt remove -y {}".format(command['Package']))
 		elif command["Command"] == "Update":
-			#ssh_connection.exec_command("sudo apt update -y {}".format(command['Package']))
+			ssh_connection.exec_command("sudo apt update -y {}".format(command['Package']))
 			print("sudo apt --only-upgrade install -y {}".format(command['Package']))
 
 
 def manage_services(command, ssh_connections):
 	for host, ssh_connection in ssh_connections.items():
 		if command["Command"] == "Restart":
-			#ssh_connection.exec_command("sudo systemctl restart {}".format(command['Service']))
+			ssh_connection.exec_command("sudo systemctl restart {}".format(command['Service']))
 			print("sudo systemctl restart {}".format(command['Service']))
 		elif command["Command"] == "Reload":
-			#ssh_connection.exec_command("sudo systemctl reload {}".format(command['Service']))
+			ssh_connection.exec_command("sudo systemctl reload {}".format(command['Service']))
 			print("sudo systemctl reload {}".format(command['Service']))
 		elif command["Command"] == "Start":
-			#ssh_connection.exec_command("sudo systemctl start {}".format(command['Service']))
+			ssh_connection.exec_command("sudo systemctl start {}".format(command['Service']))
 			print("sudo systemctl start {}".format(command['Service']))
 		elif command["Command"] == "Stop":
-			#ssh_connection.exec_command("sudo systemctl stop {}".format(command['Service']))
+			ssh_connection.exec_command("sudo systemctl stop {}".format(command['Service']))
 			print("sudo systemctl stop {}".format(command['Service']))
 
 

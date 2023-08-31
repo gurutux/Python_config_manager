@@ -1,39 +1,36 @@
 {
 	"Hosts":{
-		"shenhab_dev":{
-			"fqdn_ip": "63.35.162.229",
-			"login_user": "ubuntu",
-			"login_pass": null,
-			"login_key_file": "/Users/mahmoud.elshenhab/.ssh/id_rsa"
+		"vm1":{
+			"fqdn_ip": "54.90.204.40",
+			"login_user": "root",
+			"login_pass": "LWACKT5Y6P4KFZ7KYPZE6WK6",
+			"login_key_file": null
+		},
+		"vm2":{
+			"fqdn_ip": "35.172.211.101",
+			"login_user": "root",
+			"login_pass": "LWACKT5Y6P4KFZ7KYPZE6WK6",
+			"login_key_file": null
 		}
 	},
 	"Services": {
-		"Service1": "Stop",
-		"Service2": "Start",
-		"Service3": "Reload",
-		"Service4": "Restart"
+		"apache2.service": "Restart"
 	},
 	"Packages":{
-		"package1": "Install",
-		"package2": "Remove",
-		"package3": "Update",
-		"related_services": ["service1", "service2"]
+		"libapache2-mod-php": "Install",
+		"php-cli": "install",
+		"related_services": ["apache2.service"]
 	},
 	"Files":{
-		"fullpath1":{
-			"Delete": null,
+		"/var/www/html/index.php":{
 			"Create":"text in the file",
-			"update_permissions": "442",
-			"update_owner": "user",
-			"Modify": "text in the file",
-			"related_services": ["service1", "service2"]
+			"update_permissions": "777",
+			"update_owner": "root",
+			"Modify": "<?php\n  header(\"Content-Type: text/plain\");\n    echo \"Hello, world!\n\";",
+			"related_services": ["apache2.service"]
 		},
-		"fullpath2":{
-			"Create":"text in the file",
-			"update_permissions": "442",
-			"update_owner": "user",
-			"modify": "text in the file",
-			"related_services": ["service1", "service2"]
+		"/var/www/html/index.html":{
+			"Delete": null
 		}
 	}
 }
