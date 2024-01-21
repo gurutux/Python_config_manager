@@ -40,7 +40,7 @@ while setting the hosts if you are using passwd only please set the login_key_fi
 you can add multible hosts and the tool will execute the same changes to both of them.
 
 
-
+```xml
 {
 	"Services": {
 		"Service1.name": "Stop",
@@ -86,3 +86,4 @@ you can add multible hosts and the tool will execute the same changes to both of
 		}
 	}
 }
+```
